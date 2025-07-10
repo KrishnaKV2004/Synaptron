@@ -31,6 +31,92 @@ pip install .
 
 ---
 
+## Core Components
+
+### Activations (`Synaptron.activations`)
+
+Available activations:
+
+* **ReLU**: `from Synaptron.activations.relu import ReLU`
+* **Sigmoid**: `from Synaptron.activations.sigmoid import Sigmoid`
+* **Linear**: `from Synaptron.activations.linear import Linear`
+
+Each activation implements:
+
+```python
+def forward(x):
+    # Returns activated output
+
+def backward(x):
+    # Returns gradient for backpropagation
+```
+
+### Layers (`Synaptron.layers`)
+
+Currently supported:
+
+* **Dense Layer**: Fully connected layer
+
+Usage:
+
+```python
+from Synaptron.layers import Dense
+layer = Dense(input_dim=3, units=4, activation='relu')
+```
+
+Methods:
+
+* `forward(inputs)`
+* `backward(dvalues)`
+* `update_weights(learning_rate)`
+
+### Losses (`Synaptron.losses`)
+
+* **Mean Squared Error (MSE)**
+
+Usage:
+
+```python
+from Synaptron.losses import mse
+loss = mse.mse_loss(y_true, y_pred)
+```
+
+### Optimizers (`Synaptron.optimizers`)
+
+* **SGD (Stochastic Gradient Descent)**
+
+Usage:
+
+```python
+from Synaptron.optimizers import sgd
+optimizer = sgd.SGD(learning_rate=0.01)
+```
+
+Methods:
+
+* `step(layers)`
+
+### Models (`Synaptron.models`)
+
+Currently available:
+
+* **Sequential Model**
+
+Usage:
+
+```python
+from Synaptron.models import Sequential
+model = Sequential()
+```
+
+Methods:
+
+* `add(layer)` – Add layers sequentially
+* `fit(X, y, epochs, learning_rate)` – Train the model
+* `predict(X)` – Inference
+
+---
+
 ## ⚙️ Usage Example
 
 Here’s how you can train a simple XOR model with Synaptron:
