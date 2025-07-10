@@ -1,5 +1,5 @@
 import numpy as np
-from Synaptron.activations import relu, sigmoid, linear
+from activations import relu, sigmoid, linear
 
 class Dense:
     def __init__(self, input_dim, units, activation='linear'):
@@ -16,15 +16,15 @@ class Dense:
 
         if activation == 'relu':
             self.activation = relu
-            from Synaptron.activations.relu import relu_derivative
+            from activations.relu import relu_derivative
             self.activation_derivative = relu_derivative
         elif activation == 'sigmoid':
             self.activation = sigmoid
-            from Synaptron.activations.sigmoid import sigmoid_derivative
+            from activations.sigmoid import sigmoid_derivative
             self.activation_derivative = sigmoid_derivative
         elif activation == 'linear':
             self.activation = linear
-            from Synaptron.activations.linear import linear_derivative
+            from activations.linear import linear_derivative
             self.activation_derivative = linear_derivative
         else:
             raise ValueError(f"Unknown activation: {activation}")
